@@ -1,0 +1,8 @@
+[user]
+	name = PostMetalFun1992
+	email = kabanovkirill54@gmail.com
+[core]
+	editor = nvim
+
+[alias]
+        lg = log --graph --color --oneline --all --decorate
