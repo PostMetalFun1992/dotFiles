@@ -1,0 +1,14 @@
+! Modes
+rofi.combi-modi: window,drun
+rofi.modi: combi
+
+
+! Look & feel
+rofi.theme: gruvbox-dark
+rofi.width: 50
+rofi.lines: 10
+rofi.columns: 1
+
+! Additional
+rofi.threads: 1
+rofi.terminal: alacritty
