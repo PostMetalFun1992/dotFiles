@@ -6,7 +6,7 @@ I don't want to loose all of my useful confs so I created this repo.
 - Browser: Firefox
 - Shell: zsh (Oh My Zsh)
 - Terminal: alacritty (with Nerd Fonts)
-- Multiplexer: byobu
+- Multiplexer: tmux
 - Text editor: NeoVim
 
 ### Additional:

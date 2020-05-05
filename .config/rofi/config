@@ -2,7 +2,6 @@
 rofi.combi-modi: window,drun
 rofi.modi: combi
 
-
 ! Look & feel
 rofi.theme: gruvbox-dark
 rofi.width: 50
