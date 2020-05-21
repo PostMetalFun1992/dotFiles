@@ -21,4 +21,3 @@ I don't want to loose all of my useful confs so I created this repo.
 ### Development:
 - JS: nvm
 - Python: pyenv, pipenv
-- Haskell: stack
