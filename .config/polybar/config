@@ -1,0 +1,112 @@
+;==========================================================
+;
+;
+;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
+;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
+;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
+;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
+;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
+;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+;
+;
+;==========================================================
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+
+[colors]
+background = #0021457A
+background-alt = #1463B6
+
+foreground = #dfdfdf
+foreground-alt = #568DDD
+
+primary = #2A76FF
+secondary = #218DC8
+alert = #bd2c40
+
+[bar/main]
+fixed-center = false
+
+width = 100%
+height = 15
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+padding-left = 0
+padding-right = 0
+
+module-margin-left = 1
+module-margin-right = 1
+
+modules-right = cpu memory wireless-network battery datetime
+
+tray-position = right
+tray-padding = 2
+tray-detached = false
+tray-background = ${colors.background}
+
+font-0 = Iosevka Nerd Font:style=Medium:size=10;3
+
+[module/datetime]
+type = internal/date
+interval = 1.0
+
+date = "%Y-%m-%d%"
+time = "%H:%M"
+label = "Date: %date% - %time%"
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+
+format = <label> <ramp-coreload>
+
+label = CPU: %percentage-sum%%
+
+ramp-coreload-spacing = 1
+ramp-coreload-0 = ▁
+ramp-coreload-1 = ▂
+ramp-coreload-2 = ▃
+ramp-coreload-3 = ▄
+ramp-coreload-4 = ▅
+ramp-coreload-5 = ▆
+ramp-coreload-6 = ▇
+ramp-coreload-7 = █
+
+[module/memory]
+type = internal/memory
+interval = 3
+
+format = <label>
+label = RAM: %gb_used%/%gb_free%
+
+[module/battery]
+type = internal/battery
+
+; $ ls -1 /sys/class/power_supply/
+battery = BAT1
+adapter = ADP1
+
+full-at = 97
+
+label-full = Battery: Fully charged 100%
+label-charging = Battery: Charging %percentage%%
+label-discharging = Battery: Discharging %percentage%%
+
+format-full = <label-full>
+format-charging = <label-charging>
+format-discharging = <label-discharging>
+
+[module/wireless-network]
+type = internal/network
+interface = wlo1
+
+label-connected = WiFi: %essid%
+format-connected = <label-connected>
+
+format-disconnected = <label-disconnected>
+
+; vim:ft=dosini
