@@ -42,7 +42,7 @@ module-margin-left = 2
 module-margin-right = 2
 
 modules-left = i3
-modules-right = alsa wireless-network battery datetime
+modules-right = xkeyboard alsa wireless-network battery datetime
 
 # tray-position = right
 # tray-padding = 2
@@ -51,6 +51,12 @@ modules-right = alsa wireless-network battery datetime
 
 font-0 = Iosevka Nerd Font:style=Medium:size=10;3
 font-1 = Iosevka Nerd Font:style=Medium:size=12;3
+
+[module/xkeyboard]
+type = internal/xkeyboard
+
+format = <label-layout>
+label-layout = %{T2} %{T-} %layout%
 
 [module/alsa]
 type = internal/alsa
