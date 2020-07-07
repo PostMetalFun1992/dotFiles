@@ -38,50 +38,70 @@ foreground = ${colors.foreground}
 padding-left = 0
 padding-right = 0
 
-module-margin-left = 1
-module-margin-right = 1
+module-margin-left = 2
+module-margin-right = 2
 
-modules-right = cpu memory wireless-network battery datetime
+modules-left = i3
+modules-right = alsa wireless-network battery datetime
 
-tray-position = right
-tray-padding = 2
-tray-detached = false
-tray-background = ${colors.background}
+# tray-position = right
+# tray-padding = 2
+# tray-detached = false
+# tray-background = ${colors.background}
 
 font-0 = Iosevka Nerd Font:style=Medium:size=10;3
+font-1 = Iosevka Nerd Font:style=Medium:size=12;3
 
-[module/datetime]
-type = internal/date
-interval = 1.0
+[module/alsa]
+type = internal/alsa
 
-date = "%Y-%m-%d%"
-time = "%H:%M"
-label = "Date: %date% - %time%"
+format-volume = <label-volume>
+label-volume = %{T2}蓼%{T-} %percentage%%
 
-[module/cpu]
-type = internal/cpu
-interval = 2
+format-muted = <label-muted>
+label-muted = %{T2}遼%{T-} 0%
 
-format = <label> <ramp-coreload>
+[module/i3]
+type = internal/i3
 
-label = CPU: %percentage-sum%%
+format = <label-state> <label-mode>
+index-sort = true
+wrapping-scroll = false
 
-ramp-coreload-spacing = 1
-ramp-coreload-0 = ▁
-ramp-coreload-1 = ▂
-ramp-coreload-2 = ▃
-ramp-coreload-3 = ▄
-ramp-coreload-4 = ▅
-ramp-coreload-5 = ▆
-ramp-coreload-6 = ▇
-ramp-coreload-7 = █
+label-mode-padding = 2
+label-mode-foreground = #000
+label-mode-background = ${colors.primary}
 
-[module/memory]
-type = internal/memory
-interval = 3
+label-focused = %index%
+label-focused-background = ${colors.background-alt}
+label-focused-underline= ${colors.primary}
+label-focused-padding = 2
 
-format = <label>
-label = RAM: %gb_used%/%gb_free%
+label-unfocused = %index%
+label-unfocused-padding = 2
+
+label-visible = %index%
+label-visible-background = ${self.label-focused-background}
+label-visible-underline = ${self.label-focused-underline}
+label-visible-padding = ${self.label-focused-padding}
+
+label-urgent = %index%
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 2
+
+; Separator in between workspaces
+; label-separator = |
+
+[module/wireless-network]
+type = internal/network
+
+interface = wlan0
+
+format-connected = <label-connected>
+label-connected = %{T2}直%{T-}  %essid%
+
+format-disconnected = <label-disconnected>
+label-disconnected = %{T2}睊%{T-}  %essid%
 
 [module/battery]
 type = internal/battery
@@ -92,21 +112,34 @@ adapter = ADP1
 
 full-at = 97
 
-label-full = Battery: Fully charged 100%
-label-charging = Battery: Charging %percentage%%
-label-discharging = Battery: Discharging %percentage%%
+# Charging
+format-charging = <ramp-capacity>  <label-charging>
+label-charging = %percentage%% (!)
 
-format-full = <label-full>
-format-charging = <label-charging>
-format-discharging = <label-discharging>
+# Discharging
+format-discharging = <ramp-capacity>  <label-discharging>
+label-discharging = %percentage%%
 
-[module/wireless-network]
-type = internal/network
-interface = wlo1
+# Full
+format-full = <ramp-capacity>  <label-full>
+label-full = 100%
 
-label-connected = WiFi: %essid%
-format-connected = <label-connected>
+ramp-capacity-0 = %{T2} %{T-}
+ramp-capacity-1 = %{T2} %{T-}
+ramp-capacity-2 = %{T2} %{T-}
+ramp-capacity-3 = %{T2} %{T-}
+ramp-capacity-4 = %{T2} %{T-}
 
-format-disconnected = <label-disconnected>
+[module/datetime]
+type = internal/date
+
+interval = 1.0
+
+date = "%d-%m-%Y%"
+time = "%H:%M"
+
+format = %{T2} %{T-} <label>
+label = %date% - %time%
+
 
 ; vim:ft=dosini
